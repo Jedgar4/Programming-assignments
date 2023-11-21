@@ -10,6 +10,10 @@ public class Card
       this.suit = b;
       setValue();   
   }
+  public int getValue()
+  {
+      return this.value;
+  }
 
   private void setValue()
   {
@@ -46,10 +50,18 @@ public class Card
           
   }
   
+  public void AceDown()
+  {
+     if(rank.equalsIgnoreCase("ace"))
+     value = 1;
+     
+  }
+  
+  
   @Override
   public String toString()
   {
-      return "Card " + this.rank + " of " + this.suit + "\nvalue " + this.value;
+      return this.rank + " of " + this.suit;
   }
 
 }
