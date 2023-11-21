@@ -80,7 +80,7 @@ public class TestCard
       
       dealerscore = dealerscore + dealercard2.getValue();
       
-      if(playerscore == 21 && dealerscore != 21)
+      if(playerscore ==21 && dealerscore != 21)
       {
          System.out.printf("Blackjack! You win!");
    
@@ -93,7 +93,8 @@ public class TestCard
       {
           System.out.printf("Dealer has blackjack."); 
       }
-      else
+      
+      if(playerscore != 21 && dealerscore != 21)
       {
       
       while(score != 4)
@@ -208,7 +209,7 @@ public class TestCard
          }
       }
    
-   }
+    }
    }  
    
 }
