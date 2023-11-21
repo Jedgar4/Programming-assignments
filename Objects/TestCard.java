@@ -148,62 +148,66 @@ public class TestCard
          System.out.println("Six Card Charlie! You win!");
       }
       
-      System.out.printf("Dealer's Cards:%n%s %s%n%d%n%n", dealercard1 , dealercard2, dealerscore);
-      
-      if(dealerscore < 17)
+      if(playerscore <= 22)
       {
-         while(dealerscore < 17)
-         {
-            dealercard3 = randomcard();
-            
-            dealerscore = dealerscore + dealercard3.getValue(); 
-            
-            if(dealerscore > 21)
-            {
-               if(dealercard1.getValue() == 11)
-               {
-                  dealercard1.AceDown();
-                  
-                  dealerscore -= 10;
-               }
-               if(dealercard2.getValue() == 11)
-               {
-                  dealercard2.AceDown();
-                  
-                  dealerscore -= 10;
       
-               }
-               if(dealercard3.getValue() == 11)
+         System.out.printf("Dealer's Cards:%n%s %s%n%d%n%n", dealercard1 , dealercard2, dealerscore);
+         
+         if(dealerscore <= 17)
+         {
+            while(dealerscore < 17)
+            {
+               dealercard3 = randomcard();
+               
+               dealerscore = dealerscore + dealercard3.getValue(); 
+               
+               if(dealerscore > 21)
                {
-                  dealercard3.AceDown();    
-                  dealerscore -= 10;
-               }
-             }
-            
-            System.out.printf("%s %d%n", dealercard3, dealerscore);
+                  if(dealercard1.getValue() == 11)
+                  {
+                     dealercard1.AceDown();
+                     
+                     dealerscore -= 10;
+                  }
+                  if(dealercard2.getValue() == 11)
+                  {
+                     dealercard2.AceDown();
+                     
+                     dealerscore -= 10;
+         
+                  }
+                  if(dealercard3.getValue() == 11)
+                  {
+                     dealercard3.AceDown();    
+                     dealerscore -= 10;
+                  }
+                }
+               
+               System.out.printf("%s %d%n", dealercard3, dealerscore);
+                   
+               if(dealerscore > 21)
+               {          
+                  System.out.println("Dealer Busted! You win!");
+                  break; 
                 
-            if(dealerscore > 21)
-            {          
-               System.out.println("Dealer Busted! You win!");
-               break; 
-             
-            }   
+               }   
+            }
+         }
+         
+         if(playerscore < dealerscore && dealerscore <= 21)
+         {
+            System.out.println("Dealer wins.");
+         }
+         if(playerscore > dealerscore && playerscore <= 21)
+         {
+            System.out.println("You win.");
+         }
+         if(playerscore == dealerscore )
+         {
+            System.out.println("Draw.");
          }
       }
-      
-      if(playerscore < dealerscore && dealerscore <= 21)
-      {
-         System.out.println("Dealer wins.");
-      }
-      if(playerscore > dealerscore && playerscore <= 21)
-      {
-         System.out.println("You win.");
-      }
-      if(playerscore == dealerscore )
-      {
-         System.out.println("Draw.");
-      }
-
+   
    }
    }  
    
