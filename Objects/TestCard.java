@@ -141,7 +141,8 @@ public class TestCard
            System.out.println("Busted! You lose!");
            break;                 
          }         
-          score=+ 1;             
+          score=+ 1; 
+                     
       }
       
       if(score == 4)
@@ -149,7 +150,7 @@ public class TestCard
          System.out.println("Six Card Charlie! You win!");
       }
       
-      if(playerscore <= 22)
+      if(playerscore <22)
       {
       
          System.out.printf("Dealer's Cards:%n%s %s%n%d%n%n", dealercard1 , dealercard2, dealerscore);
