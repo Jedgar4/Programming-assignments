@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.event.*;
 import javafx.scene.control.*;
 import javafx.scene.*;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 
 public class TictacToe2 extends Application
 {
@@ -37,8 +39,8 @@ public class TictacToe2 extends Application
       public Tile()
       {
          Rectangle border = new Rectangle(200, 200);
-         border.setFill(null);
-         border.setStroke(Color.BLACK);
+         border.setFill(Color.BLACK);
+         border.setStroke(Color.WHITE);
          
          setAlignment(Pos.CENTER);
          getChildren().addAll(border);
