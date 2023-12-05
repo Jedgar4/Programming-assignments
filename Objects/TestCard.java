@@ -53,7 +53,7 @@ public class TestCard
             playerscore -= 10;
          }
        }
-      if(playerscore >21)
+      if(dealerscore >21)
       {
          if(dealercard1.getValue() == 11)
          {
@@ -148,9 +148,10 @@ public class TestCard
       if(score == 4)
       {
          System.out.println("Six Card Charlie! You win!");
+         scanner.close();
       }
       
-      if(playerscore <22)
+      if(playerscore <22 && score != 4)
       {
       
          System.out.printf("Dealer's Cards:%n%s %s%n%d%n%n", dealercard1 , dealercard2, dealerscore);
@@ -167,16 +168,13 @@ public class TestCard
                {
                   if(dealercard1.getValue() == 11)
                   {
-                     dealercard1.AceDown();
-                     
+                     dealercard1.AceDown();                    
                      dealerscore -= 10;
                   }
                   if(dealercard2.getValue() == 11)
                   {
-                     dealercard2.AceDown();
-                     
-                     dealerscore -= 10;
-         
+                     dealercard2.AceDown();                     
+                     dealerscore -= 10;     
                   }
                   if(dealercard3.getValue() == 11)
                   {
@@ -187,24 +185,23 @@ public class TestCard
                
                System.out.printf("%s %d%n", dealercard3, dealerscore);
                    
-               if(dealerscore > 21)
+               if(dealerscore > 21) 
                {          
                   System.out.println("Dealer Busted! You win!");
-                  break; 
-                
+                  break;                 
                }   
             }
          }
          
-         if(playerscore < dealerscore && dealerscore <= 21)
+         if(playerscore < dealerscore && dealerscore <= 21 && score != 4)
          {
             System.out.println("Dealer wins.");
          }
-         if(playerscore > dealerscore && playerscore <= 21)
+         if(playerscore > dealerscore && playerscore <= 21 && score != 4)
          {
             System.out.println("You win.");
          }
-         if(playerscore == dealerscore )
+         if(playerscore == dealerscore && score != 4 )
          {
             System.out.println("Draw.");
          }
