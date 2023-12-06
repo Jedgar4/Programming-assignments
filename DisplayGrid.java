@@ -18,6 +18,18 @@ import javafx.scene.input.MouseButton;
 
 public class DisplayGrid extends Application
 {
+     
+      public boolean turn()  
+      {   
+         int rand = (int)(Math.random()*2);     
+         if(rand == 0)
+         {
+           return true;
+         }
+         return false;
+      }
+      private boolean turnX = turn();
+ 
    private Parent createContent()
    {
       Pane root = new Pane();
@@ -33,7 +45,6 @@ public class DisplayGrid extends Application
             root.getChildren().add(tile);
          }
       }
-
       
       return root;
    }
@@ -47,27 +58,38 @@ public class DisplayGrid extends Application
          border.setFill(Color.BLACK);
          border.setStroke(Color.WHITE);
          
-         setAlignment(Pos.CENTER);
-         getChildren().addAll(border);
-         //getChildren().addAll(border, text);
+         text.setFont(Font.font(72));
          
+         setAlignment(Pos.CENTER);
+         getChildren().addAll(border, text);
+       
          setOnMouseClicked(event->
          { 
             if(event.getButton() == MouseButton.PRIMARY)
             {
-               drawX(); 
+
+               if(!turnX)
+               {
+                  return;
+               }
+               drawX();
+               text.setFill(Color.RED); 
+                 
+               turnX = false;
             }
             if(event.getButton() == MouseButton.SECONDARY)
             {
-               drawO(); 
+               if(turnX)
+               {
+                  return;
+               }
+               drawO();
+               text.setFill(Color.BLUE); 
+               turnX = true;           
             }
-         });
-
-            
-               
-         
+         });      
       }
-      
+     
       private void drawX()
       {
          text.setText("X");
@@ -76,42 +98,9 @@ public class DisplayGrid extends Application
       {
          text.setText("O");
       }
-
-   }
-
- 
+   } 
    public void start(Stage primaryStage) throws Exception
    {
-    /*  primaryStage.setTitle("TicTacToe");
-      Button button1 = new Button("1");
-      Button button2 = new Button("2");
-      Button button3 = new Button("3");
-      Button button4 = new Button("4");
-      Button button5 = new Button("5");
-      Button button6 = new Button("6");
-      Button button7 = new Button("7");
-      Button button8 = new Button("8");
-      Button button9 = new Button("9");
-      
-      TilePane tilePane = new TilePane();
-      tilePane.getChildren().add(button1);
-      tilePane.getChildren().add(button2);
-      tilePane.getChildren().add(button3);
-      tilePane.getChildren().add(button4);
-      tilePane.getChildren().add(button5);
-      tilePane.getChildren().add(button6);
-      tilePane.getChildren().add(button7);
-      tilePane.getChildren().add(button8);
-      tilePane.getChildren().add(button9);
-      
-     tilePane.setTileAlignment(Pos.CENTER);
-      Scene scene = new Scene(tilePane,600, 600);
-      primaryStage.setScene(scene);
-      primaryStage.show();*/
-       
-
-     
-
       
      primaryStage.setResizable(false);
       primaryStage.setMinWidth(600);
