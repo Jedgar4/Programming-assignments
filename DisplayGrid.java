@@ -18,6 +18,9 @@ import javafx.scene.input.MouseButton;
 
 public class DisplayGrid extends Application
 {
+      private Tile[][] board = new Tile[3][3];
+      private Tile[][] board = new Tile[3][3];
+      private List<combi> combos = new Arraylist<>();
      
       public boolean turn()  
       {   
@@ -43,8 +46,22 @@ public class DisplayGrid extends Application
             tile.setTranslateX(j * 200);
             tile.setTranslateY(i * 200);
             root.getChildren().add(tile);
+            
+            board[j][i] = tile;
          }
       }
+      for(int y = 0; y< 3; y++)
+      {
+         combos.add(new Combo(board[0][y], board[1][y],board[2][y]));
+      }
+      for(int x =0; x <3; x++)
+      {
+         combos.add(new Combo(board[x][0], board[x][1], board[x][2]));
+      }
+      
+      combos.add(new Combo(board[0][0], board[1][1], board[2][2]));
+      
+      
       
       return root;
    }
